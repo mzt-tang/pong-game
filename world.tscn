@@ -1,36 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhq4srwcbmux"]
+[gd_scene load_steps=7 format=3 uid="uid://bqhq4srwcbmux"]
 
-[ext_resource type="Texture2D" uid="uid://belnw2u4d71r0" path="res://paddleBlu.png" id="1_5oyfy"]
-[ext_resource type="Script" path="res://PlayerBlue.gd" id="1_xagjk"]
-[ext_resource type="Texture2D" uid="uid://by7cfsv0deowe" path="res://paddleRed.png" id="3_6mgt7"]
-[ext_resource type="Script" path="res://PlayerRed.gd" id="3_k7dxv"]
+[ext_resource type="PackedScene" uid="uid://cmkmc1xbp0tcw" path="res://Player/player_blue.tscn" id="1_j6hhv"]
+[ext_resource type="PackedScene" uid="uid://iqckncibs6lu" path="res://Player/player_red.tscn" id="2_y8bti"]
+[ext_resource type="PackedScene" uid="uid://3jh6sy6l7576" path="res://Ball/ball.tscn" id="3_ox0i0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjxai"]
-radius = 12.0
-height = 104.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrj8"]
+size = Vector2(1152, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75m0x"]
+size = Vector2(20, 688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3q2"]
+size = Vector2(20, 688)
 
 [node name="World" type="Node2D"]
 
-[node name="PlayerBlue" type="CharacterBody2D" parent="."]
-position = Vector2(26, 213)
-script = ExtResource("1_xagjk")
-metadata/_edit_group_ = true
+[node name="PlayerBlue" parent="." instance=ExtResource("1_j6hhv")]
+position = Vector2(53, 214)
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerBlue"]
-rotation = 1.5708
-texture = ExtResource("1_5oyfy")
+[node name="PlayerRed" parent="." instance=ExtResource("2_y8bti")]
+position = Vector2(1100, 202)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBlue"]
-shape = SubResource("CapsuleShape2D_yjxai")
+[node name="Ball" parent="." instance=ExtResource("3_ox0i0")]
 
-[node name="PlayerRed" type="CharacterBody2D" parent="."]
-position = Vector2(1096, 206)
-script = ExtResource("3_k7dxv")
-metadata/_edit_group_ = true
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerRed"]
-rotation = 1.5708
-texture = ExtResource("3_6mgt7")
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRed"]
-shape = SubResource("CapsuleShape2D_yjxai")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_3nrj8")
+
+[node name="WallBottom" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
+position = Vector2(576, 658)
+shape = SubResource("RectangleShape2D_3nrj8")
+
+[node name="WallRight" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
+position = Vector2(1162, 324)
+shape = SubResource("RectangleShape2D_75m0x")
+
+[node name="WallLeft" type="Area2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_3s3q2")
+
+[connection signal="area_entered" from="Walls/WallLeft" to="Ball" method="_on_wall_left_area_entered"]

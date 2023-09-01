@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://iqckncibs6lu"]
+
+[ext_resource type="Script" path="res://Player/PlayerRed.gd" id="1_usc5o"]
+[ext_resource type="Texture2D" uid="uid://by7cfsv0deowe" path="res://Player/paddleRed.png" id="2_qnnc2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjxai"]
+radius = 12.0
+height = 104.0
+
+[node name="PlayerRed" type="CharacterBody2D"]
+position = Vector2(1125, 205)
+script = ExtResource("1_usc5o")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_qnnc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yjxai")
