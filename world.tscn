@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqhq4srwcbmux"]
+[gd_scene load_steps=6 format=3 uid="uid://bqhq4srwcbmux"]
 
 [ext_resource type="PackedScene" uid="uid://cmkmc1xbp0tcw" path="res://Player/player_blue.tscn" id="1_j6hhv"]
 [ext_resource type="PackedScene" uid="uid://iqckncibs6lu" path="res://Player/player_red.tscn" id="2_y8bti"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrj8"]
 size = Vector2(1152, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_75m0x"]
-size = Vector2(20, 688)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3s3q2"]
 size = Vector2(20, 688)
@@ -36,12 +33,6 @@ shape = SubResource("RectangleShape2D_3nrj8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
 position = Vector2(576, 658)
 shape = SubResource("RectangleShape2D_3nrj8")
-
-[node name="WallRight" type="StaticBody2D" parent="Walls"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
-position = Vector2(1162, 324)
-shape = SubResource("RectangleShape2D_75m0x")
 
 [node name="WallLeft" type="Area2D" parent="Walls"]
 
