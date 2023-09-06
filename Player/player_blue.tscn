@@ -1,20 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmkmc1xbp0tcw"]
+[gd_scene load_steps=4 format=3 uid="uid://bug7uogg0glmm"]
 
-[ext_resource type="Script" path="res://Player/PlayerBlue.gd" id="1_dwvoo"]
+[ext_resource type="Script" path="res://Player/player_blue.gd" id="1_4sm02"]
 [ext_resource type="Texture2D" uid="uid://belnw2u4d71r0" path="res://Player/paddleBlu.png" id="2_vvxvn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjxai"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1cnx6"]
 radius = 12.0
 height = 104.0
 
-[node name="PlayerBlue" type="CharacterBody2D"]
-position = Vector2(26, 213)
-script = ExtResource("1_dwvoo")
-metadata/_edit_group_ = true
+[node name="PlayerBlue" type="AnimatableBody2D"]
+script = ExtResource("1_4sm02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_vvxvn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_yjxai")
+shape = SubResource("CapsuleShape2D_1cnx6")
