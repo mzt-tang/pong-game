@@ -1,11 +1,17 @@
-extends Node2D
+extends Node
+
+var PlayerScore = 0
+var OpponentScore = 0
+
+func _on_point_zone_left_body_entered(body):
+	$Ball.position = Vector2(1152/2, 648/2)
+	OpponentScore +=1
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _on_point_zone_right_body_entered(body):
+	$Ball.position = Vector2(1152/2, 648/2)
+	PlayerScore +=1
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$PlayerScore.text = str(PlayerScore)
+	$OpponentScore.text = str(OpponentScore)
