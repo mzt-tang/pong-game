@@ -7,7 +7,6 @@
 radius = 11.0
 
 [node name="Ball" type="CharacterBody2D"]
-position = Vector2(575, 240)
 script = ExtResource("1_6stfr")
 metadata/_edit_group_ = true
 

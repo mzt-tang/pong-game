@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhq4srwcbmux"]
+[gd_scene load_steps=8 format=3 uid="uid://bqhq4srwcbmux"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_gis7p"]
 [ext_resource type="PackedScene" uid="uid://bug7uogg0glmm" path="res://Player/player_blue.tscn" id="1_j6hhv"]
 [ext_resource type="PackedScene" uid="uid://iqckncibs6lu" path="res://Player/player_red.tscn" id="2_y8bti"]
+[ext_resource type="PackedScene" uid="uid://3jh6sy6l7576" path="res://Ball/ball.tscn" id="5_awyna"]
 [ext_resource type="PackedScene" uid="uid://bd75e7bmnaen8" path="res://Point Zone/point_zone.tscn" id="5_pua03"]
+[ext_resource type="PackedScene" uid="uid://86718k8jgeke" path="res://pause.tscn" id="6_vo6ha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nrj8"]
 size = Vector2(1152, 20)
@@ -38,6 +40,8 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Pause" parent="." instance=ExtResource("6_vo6ha")]
+
 [node name="PlayerBlue" parent="." instance=ExtResource("1_j6hhv")]
 position = Vector2(74, 282)
 
@@ -45,12 +49,10 @@ position = Vector2(74, 282)
 position = Vector2(1081, 318)
 
 [node name="PointZoneLeft" parent="." instance=ExtResource("5_pua03")]
-position = Vector2(-10, 324)
-collision_mask = 2
+position = Vector2(-51, 324)
 
 [node name="PointZoneRight" parent="." instance=ExtResource("5_pua03")]
-position = Vector2(1162, 324)
-collision_mask = 2
+position = Vector2(1203, 324)
 
 [node name="WallBottom" type="StaticBody2D" parent="."]
 collision_layer = 5
@@ -65,6 +67,9 @@ collision_layer = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
 position = Vector2(576, -10)
 shape = SubResource("RectangleShape2D_3nrj8")
+
+[node name="Ball" parent="." instance=ExtResource("5_awyna")]
+position = Vector2(576, 318)
 
 [connection signal="body_entered" from="PointZoneLeft" to="." method="_on_point_zone_left_body_entered"]
 [connection signal="body_entered" from="PointZoneRight" to="." method="_on_point_zone_right_body_entered"]

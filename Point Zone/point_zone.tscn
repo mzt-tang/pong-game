@@ -6,4 +6,5 @@ size = Vector2(20, 688)
 [node name="PointZone" type="Area2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_3s3q2")

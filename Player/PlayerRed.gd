@@ -2,12 +2,11 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const AI = false
+const AI = true
 var ball
 
 func _ready():
-#	ball = get_parent().find_child("Ball")
-	pass
+	ball = get_parent().find_child("Ball")
 
 func _physics_process(delta):
 	if AI:
